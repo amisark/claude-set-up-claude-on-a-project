@@ -11,13 +11,14 @@ I ran the Claude /memory and /permissions commands. Both reflected the expected 
 - Generic advice like "write tests" or "don't commit secrets" — not project-specific, and explicitly asked to avoid.
 - Anything about the course assignment itself beyond the one-line reminder not to touch app code — that's a one-off instruction for this session, not a lasting fact about the codebase.
 - No secrets or long pasted docs — there's nothing sensitive in this repo to begin with (`.env.example` has no real values).
-- In the Command section I removed the npm install line. This command is probably a one time command and would not be run  very often if more thn once, 
+- In the Command section I removed the npm install line. This command is probably a one time command and would not be run very often if more than once.
 
 ## `.claude/settings.json`
-I removed entries from each group so there was only one entry from each groupi, just to simplify my tests.
+I removed entries from each group so there was only one entry from each group, just to simplify my tests.
 **Allow:** `npm test`— all safe, frequently run, and non-destructive, so requiring approval every time would just be friction.
 
 **Ask:** `git push` — not dangerous on their own, but worth a confirmation since they change shared/persistent state and I'd rather review what's being committed or pushed before it happens.
 
 **Deny:**
 - `Bash(git push --force:*)` — a force-push can silently overwrite or delete commits on a shared branch. Without the deny rule, a mistaken or over-eager force-push could destroy history that isn't recoverable, especially since `ask` on plain `git push` doesn't automatically cover a `--force` variant.
+- `Read(**/.env*)` - block Claude from reading any .env files.
