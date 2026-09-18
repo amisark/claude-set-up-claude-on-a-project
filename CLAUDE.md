@@ -1,6 +1,5 @@
 # CLAUDE.md
-
-This is the starter Express API for the Claude Code course. It exists as a realistic codebase to configure Claude Code on — see the course task in README.md. **Do not change the app code** (`server.js`, `routes/`, `db/store.js`, `tests/`) unless explicitly asked; the deliverables for this project are `CLAUDE.md`, `.claude/settings.json`, and `NOTES.md`.
+# Project: A starter Express API for user management and health checks, used as the foundation for the Claude Code course.
 
 ## Commands
 
